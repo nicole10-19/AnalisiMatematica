@@ -1,0 +1,434 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+
+\title{Analisi 1.b - Teoria Completa}
+\date{}
+\begin{document}
+\maketitle
+\vspace{-2.5cm}
+\renewcommand{\contentsname}{Indice}
+\tableofcontents
+
+% ============================
+% CAPITOLO 1
+% ============================
+\section{Integrale di Riemann in $\mathbb{R}$}
+
+\subsection{Costruzione}
+L'integrale di Riemann nasce dall'esigenza di dare un significato rigoroso al concetto di area sotto il grafico di una funzione.  
+L’idea intuitiva è quella di approssimare l’area con rettangoli: si suddivide l'intervallo $[a,b]$ in sottointervalli e si costruiscono rettangoli la cui altezza è determinata dai valori della funzione.  
+Si definiscono le somme superiori e inferiori, che rappresentano due stime dell’area: la prima tende a sovrastimare, la seconda a sottostimare.  
+Se i limiti coincidono, la funzione è integrabile e il valore comune è l’integrale.
+Nella costruzione dell'integrale facciamo riferimento alla somma di Riemann ovvero:
+\[
+S(f, P, {t_i}) = \sum_{i=0}^{n-1} f(t_i) (x_{i+1} - x_i)\
+\]
+
+\subsection{Funzione integrale e Teorema fondamentale}
+Data $f$ integrabile su $[a,b]$, si definisce:
+
+
+\[
+F(x)=\int_a^x f(t)\,dt.
+\]
+
+
+Se $f$ è continua, $F$ è derivabile e $F'(x)=f(x)$.  
+Questo risultato collega derivazione e integrazione: l’integrale accumula i valori della funzione, la derivata restituisce istantaneamente la funzione originale. 
+Il primo teorema fondamentale afferma che $F$ è continua su $[a,b]$, derivabile su $]a,b[$ e che $F'(x) = f(x)$
+Dimostrazione:
+\[
+\frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h}f(t) \,dt.
+\]
+
+\[\int_x^{x+h} f(t)\,dt = f(c)h\]
+
+
+\[\frac{F(x+h)-F(x)}{h} = f(c)\]
+Si ha quindi che :
+
+\[\lim_{h \to 0} f(c) = f(x)\]
+
+
+Il \textbf{secondo teorema} afferma che se $F$ è una primitiva di $f$ allora:
+
+\[\int_a^b f(x)\,dx = F(b)- F(a)\]
+
+\subsection{Primitive}
+Una primitiva di $f$ è una funzione $F$ tale che $F'(x)=f(x)$.  
+Le primitive differiscono per una costante: se $F$ è primitiva, anche $F+C$ lo è.  
+Questo riflette la natura della derivata, che “perde” l'informazione costante.  
+
+\subsection{Integrazione per parti e per sostituzione}
+L'integrazione per parti e per sostituzione sono due tecniche fondamentali per calcolare integrali più complessi, basate rispettivamente sulla regola del prodotto e sulla composizione di funzioni.
+La formula per parti deriva dalla regola del prodotto:
+
+
+\[
+\int_a^b u'v = [uv]_a^b - \int_a^b uv'.
+\]
+
+L'integrazione per sostituzione serve a integrare tramite cambio di variabile. Se $f$ è continua e $\phi$ è una funzione derivabile con immagine contenuta nel dominio di $f$, allora :
+
+\[\int f(\phi(x))\phi '(x)\, dx = \int f(u)\, du\ \text { con } \text{ }  u = \phi(x) \]
+
+
+\subsection{Integrali impropri}
+Gli integrali impropri si presentano quando l’intervallo è infinito o la funzione ha singolarità.  
+Si definiscono tramite limiti, ad esempio:
+
+
+\[
+\int_a^{+\infty} f(x)\,dx = \lim_{b\to+\infty}\int_a^b f(x)\,dx.
+\]
+
+
+\subsection{Criteri di convergenza: confronto, convergenza assoluta, monotonia.}
+Gli integrali in senso generalizzato estendono il concetto di integrale a funzioni non limitate o su intervalli infiniti. 
+La loro convergenza si verifica tramite criteri specifici, come il confronto e la convergenza assoluta.
+
+\textbf{Integrale generalizzato: }quando l'intervallo è infinito oppure quando la funzione ha discontinuità in un punto dell'intervallo 
+\[\int_0^{+\infty} f(x)\,dx = \lim_{R \to +\infty}\int_a^Rf(x)\,dx\]
+
+\textbf{Convergenza}
+    \begin{itemize}
+        \item \textit{Criterio di confronto:} se $0 \leq f(x) \leq g(x)$ per ogni $x$ e $\int g(x)\,dx$ converge, allora $\int f(x)\, dx$ converge
+        \item \textit{Convergenza assoluta: } se $\int |f(x)| \,dx$ converge , allora anche $\int f(x)\,dx$ converge
+        \item \textit{Confronto asintotico: } se $f(x) \sim g(x)$ per $x \to \infty$, cioè il loro rapporto tende a $1$, allora $f$ e $g$ hanno lo stesso comportamento integrale  
+    \end{itemize}
+
+% ============================
+% CAPITOLO 2
+% ============================
+\section{Derivate e differenziabilità}
+
+\subsection{Derivata direzionale}
+La derivata direzionale misura la variazione di una funzione a più variabili lungo una direzione specifica, mentre le derivate parziali ne descrivono le variazioni lungo gli assi coordinati.
+Descriviamo la \textbf{derivata direzionale} come :
+
+\[
+D_v f(x_0)=\lim_{t\to 0}\frac{f(x_0+tv)-f(x_0)}{t}.
+\]
+
+Essa rappresenta la velocità con cui $f$ cambia  se ci si muove da x nella direzione di $\Vec{ v}$ 
+Geometricamente è la pendenza della curva ottenuta restringendo $f$ alla retta $x_0+tv$.
+
+\subsection{Derivate parziali}
+Le derivate parziali sono un caso particolare di derivata direzionale, in cui la direzione è uno degli assi del sistema di riferimento 
+In $\mathbb{R}^2$:
+\[\frac{\partial{f}}{\partial{x_i}}= \lim_{h \to 0}\frac{f(x_1, ...,x_i+h,...,x_n)-f(x)}{h}\]
+
+\[
+\frac{\partial f}{\partial x}(x_0,y_0),\quad \frac{\partial f}{\partial y}(x_0,y_0).
+\]
+
+
+
+\subsection{Differenziabilità}
+$f$ è differenziabile in $x_0$ se può essere approssimata linearmente, ovvero, se il grafico ammette un piano tangente in quel punto 
+
+Sia $f: R^n \to R$ una funzione. Si dice che $f$ è differenziabile in un punto $x_0 \in R^n $ se esiste una funzione lineare $L: R^n \to R$ tale che:
+
+\[
+\lim_{h \to 0} \frac{f(x_0 +h) -f(x_0) -L(h)}{||h||}
+\]
+
+
+Significato: il grafico è localmente “quasi lineare”, cioè ammette un piano tangente.
+
+\subsection{Teorema}
+Se $f$ è differenziabile, allora è continua e derivabile in ogni direzione:
+
+
+\[
+D_v f(x_0)=\nabla f(x_0)\cdot v.
+\]
+Rappresenta la variazione infinitesima della funzione in termini delle variazioni infinitesime delle variabili, pesate dalle derivate parziali 
+
+\subsection{Differenziabile implica continua e derivabile in ogni direzione}
+Se una funzione $f: R \to R^n$ è differenziabile in un punto $x_0$, allora è anche continua in $x_0$ e derivabile in ogni direzione in $x_0$. Questo teorema mostra che la differenziabilità è una proprietà più forte della semplice derivata direzionale
+\textbf{Dimostrazione: }
+
+\[\lim_{h \to 0} \frac{f(x_0 +h) +f(x_0) -L(h)}{||h||} = 0\]
+\[f(x_0 +h) = f(x_0)+L(h)+o(||h||) \]
+
+\subsection{Hessiana e Jacobiana}
+La \textbf{Hessiana} è la matrice delle derivate seconde di $f:\mathbb{R}^n\to\mathbb{R}$, descrive la curvatura e serve a classificare i punti critici.  
+La Jacobiana è la matrice delle derivate parziali di $F:\mathbb{R}^n\to\mathbb{R}^m$, rappresenta la migliore approssimazione lineare di $F$ vicino a un punto.
+
+% ============================
+% CAPITOLO 3
+% ============================
+\section{Integrali multipli e cambi di variabile}
+
+\subsection{Integrale su un rettangolo}
+Si costruisce come nel caso unidimensionale, suddividendo il rettangolo in blocchi elementari e considerando supremi e infimi.
+
+La formula generale è: 
+\[S(f, P) = \sum f(x_i) vol(R_i)\]  \text{dove $vol(R_i)$ è il volume dei rettangoli di $R_i$}
+
+Se al raffinarsi, queste somme convergono a un valore indipendente dalla scelta di $x_i$, allora $f$ è integrabile secondo Riemann su $f$
+
+\[\int_R f(x)\,dx\]
+\subsection{Integrali doppi}
+Se $D$ è semplice rispetto a $x$:
+
+
+\[
+\iint_D f(x,y)\,dx\,dy=\int_a^b\left(\int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y)\,dy\right)dx.
+\]
+
+Dove $D<R^2$ è un dominio semplice in x. In questa formula si integra prima lungo una direzione tenendo l'altra fissa, e poi si somma lungo l'altra direzione.
+
+
+\subsection{Integrali tripli}
+Per calcolare gli integrali tripli su domini $R^3$, si usano le formule per fili e strati, che corrispondono a domini semplici rispetto a una variabile.\\ 
+\textbf{Per Strati:}
+
+\[
+\iiint_D f(x,y,z)\,dx\,dy\,dz=\iint_B\left(\int_{\varphi_1(x,y)}^{\varphi_2(x,y)} f(x,y,z)\,dz\right)dx\,dy.
+\]\\
+
+\textbf{Per Fili:}
+
+\[
+\iiint_Df(x,y,z)\,dx\,dy\,dz = \int_c^d(\int_e^f(\int_{\alpha(y,z)}^{\beta(y,z)} f(x,y,z)\,dx)\,dy)\,dz
+\]
+Questa formula viene utilizzata quando il dominio è semplice rispetto a x, cioè per ogni $(y,z)$, la variabile $x$ varia tra due funzioni $\alpha(y,z)$ e $\beta(y,z)$
+\subsection{Coordinate polari}
+Le coordinate polari sono una trasformazione che esprime un punto $(x,y) \in R^2$ in termini di raggio $r \geq 0$ e angolo $\theta \in [0, 2\pi)$, utilizzando le seguenti formule:
+
+\[
+x=r\cos\theta,\ y=r\sin\theta,\quad J=r.
+\]
+
+\textbf{Jacobiano della trasformazione: }
+
+\[
+J(R, \theta) = 
+\begin{bmatrix}
+\frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta}\\
+\frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta}
+\end{bmatrix} = 
+\begin{bmatrix}
+cos\theta & -rsin\theta\\
+sin\theta & rcos\theta
+\end{bmatrix}
+\]
+
+Il valore assoluto del Jacobiano è $|J| = r$, che rappresenta il fattore di scala dell'area nel passaggio da coordinate cartesiane a polari 
+
+Formula:
+
+
+\[
+\iint_D f(x,y)\,dx\,dy=\iint_{D'} f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.
+\]
+
+
+
+\subsection{Coordinate cilindriche}
+Le coordinate cilindriche sono una trasformazione utile per integrare su domini tridimensionali con simmetria circolare attorno all'asse $z$\\
+
+\[
+x=r\cos\theta,\ y=r\sin\theta,\ z=z,\quad J=r.
+\]
+
+\textbf{Jacobiano della trasformazione: }
+\[
+J(R, \theta, z) = 
+\begin{bmatrix}
+\frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta} & \frac{\partial x}{\partial z}\\
+\frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta} & \frac{\partial y}{\partial z}\\
+\frac{\partial z}{\partial r} & \frac{\partial z}{\partial \theta} & \frac{\partial z}{\partial z}
+\end{bmatrix} = 
+\begin{bmatrix}
+cos\theta & -rsin\theta & 0\\
+sin\theta & rcos\theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]\\
+Formula cambio variabile negli integrali tripli :
+
+\[
+\iiint_D f(x,y,z)\,dx\,dy\,dz=\iiint_{D'} f(r\cos\theta,r\sin\theta,z)\,r\,dr\,d\theta\,dz.
+\]
+
+\textit{D' = dominio in coordinate cilindriche}
+
+\subsection{Coordinate sferiche}
+
+Le coordinate sferiche sono una trasformazione utile per integrare su domini con simmetria sferica.\\
+Le formule utilizzate sono: 
+\[
+x=\rho\sin\phi\cos\theta,\ y=\rho\sin\phi\sin\theta,\ z=\rho\cos\phi,\quad J=\rho^2\sin\phi.
+\]
+\textit{$\rho$ = distanza dall'origine}\\
+\textit{$\phi$ = angolo rispetto all'asse $z$}
+
+$|J| = \rho^2sin\phi$
+Formula integrale :
+\[
+\iiint_D f(x,y,z)\,dx\,dy\,dz=\iiint_{D'} f(\rho\sin\phi\cos\theta,\rho\sin\phi\sin\theta,\rho\cos\phi)\,\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.
+\]
+\textit{$D'$ = dominio in coordinate sferiche}
+
+
+% ============================
+% CAPITOLO 4
+% ============================
+\section{Numeri complessi}
+
+\subsection{Definizione}
+Un numero complesso è $z=x+iy$, con $i^2=-1$.  
+La parte reale è $x$, la parte immaginaria è $y$.\\
+Questa tipologia di numeri consente di trattare soluzioni di equazioni come $x^2+1=0$
+
+\subsection{Forme}
+- \textbf{  Algebrica}: $z=x+iy$. \\ 
+- \textbf{Trigonometrica}: $z=|z|(\cos\theta+i\sin\theta)$.\\
+- \textbf{ Esponenziale}: (ricavata dalla formula di Eulero) $z=|z|e^{i\theta}$.
+
+\subsection{Radici $n$-me}
+Le radici $n$-me di $z$ sono:
+
+
+\[
+w_k=|z|^{1/n}\left(\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}\right),\quad k=0,\dots,n-1.
+\]
+
+
+Dimostrazione: si scrive $w=\rho(\cos\varphi+i\sin\varphi)$, si impone $w^n=z$ e si ricavano $\rho=|z|^{1/n}$ e $\varphi=\frac{\theta+2k\pi}{n}$.  
+Significato geometrico: le radici sono disposte su una circonferenza di raggio $|z|^{1/n}$, equidistanti di $2\pi/n$.
+
+% ============================
+% CAPITOLO 5
+% ============================
+\section{Equazioni differenziali ordinarie}
+
+\subsection{Teorema di Cauchy di esistenza ed unicità}
+Il teorema di Cauchy è uno dei risultati fondamentali della teoria delle equazioni differenziali.  
+Consideriamo il problema di Cauchy:
+
+
+\[
+y'(t) = f(t,y(t)), \quad y(t_0) = y_0.
+\]
+
+
+Se $f$ è continua in un intorno di $(t_0,y_0)$ e soddisfa una condizione di Lipschitz rispetto alla variabile $y$, allora esiste un intervallo $I$ contenente $t_0$ e una funzione $y:I\to\mathbb{R}$ che risolve l’equazione. Inoltre, tale soluzione è unica.  
+
+\textbf{Significato}: il teorema garantisce che i dati iniziali determinano una sola traiettoria. Questo è cruciale perché assicura che il modello matematico sia ben posto e non porti a soluzioni ambigue.
+
+\subsection{Equazioni a variabili separabili}
+Un'equazione differenziale si dice a variabili separabili se può essere scritta come:
+
+
+\[
+y'(t) = g(t)h(y).
+\]
+
+
+Il metodo di risoluzione consiste nel separare le variabili e integrare:
+
+
+\[
+\frac{1}{h(y)}\,dy = g(t)\,dt.
+\]
+
+
+Integrando entrambi i membri si ottiene una relazione tra $y$ e $t$.  
+
+\textbf{Esempio}: consideriamo $y'(t) = t y$.  
+Separando: $\frac{1}{y}\,dy = t\,dt$.  
+Integrando: $\ln|y| = \frac{t^2}{2} + C$.  
+Quindi:
+
+
+\[
+y(t) = Ce^{t^2/2}.
+\]
+
+
+
+\subsection{Equazioni lineari del primo ordine}
+Un’equazione lineare del primo ordine ha la forma:
+
+
+\[
+y'(t) + a(t)y(t) = b(t),
+\]
+
+
+dove $a(t)$ e $b(t)$ sono funzioni continue su un intervallo $I$.  
+
+Il metodo di risoluzione utilizza il \textbf{fattore integrante}:
+
+
+\[
+\mu(t) = e^{\int a(t)\,dt}.
+\]
+
+
+Moltiplicando l'equazione per $\mu(t)$ si ottiene:
+
+
+\[
+\frac{d}{dt}(\mu(t)y(t)) = \mu(t)b(t).
+\]
+
+
+Integrando:
+
+
+\[
+\mu(t)y(t) = \int \mu(t)b(t)\,dt + C.
+\]
+
+
+Infine:
+
+
+\[
+y(t) = \frac{1}{\mu(t)}\left(\int \mu(t)b(t)\,dt + C\right).
+\]
+
+
+
+\textbf{Esempio}: consideriamo $y'(t) + y(t) = e^t$.  
+Qui $a(t)=1$, $b(t)=e^t$.  
+Il fattore integrante è:
+
+
+\[
+\mu(t) = e^{\int 1\,dt} = e^t.
+\]
+
+
+Moltiplicando:
+
+
+\[
+\frac{d}{dt}(e^t y(t)) = e^{2t}.
+\]
+
+
+Integrando:
+
+
+\[
+e^t y(t) = \frac{1}{2}e^{2t} + C.
+\]
+
+
+Quindi:
+
+
+\[
+y(t) = \frac{1}{2}e^t + Ce^{-t}.
+\]
+
+
+
+\end{document}
